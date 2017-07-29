@@ -12,10 +12,11 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "id-length": 0,
-    "jsx-quotes": [2, "prefer-single"],
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-quotes": [2, "prefer-single"],
     "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-no-bind": 1,
     "react/jsx-no-duplicate-props": 2
   }

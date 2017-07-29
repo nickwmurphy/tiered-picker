@@ -3,7 +3,7 @@ import Tauwahi from 'tauwahi';
 import Tipako from 'tipako';
 
 import data from './data';
-import styles from './App.scss';
+import styles from './TieredPicker.scss';
 
 export default class LocationPicker extends Component {
   constructor(props) {

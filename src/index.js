@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import TieredPicker from './TieredPicker.jsx'; // eslint-disable-line
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<TieredPicker />, document.getElementById('root'));

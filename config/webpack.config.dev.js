@@ -144,6 +144,8 @@ module.exports = {
           /\.gif$/,
           /\.jpe?g$/,
           /\.png$/,
+          /\.scss$/,
+          /\.sass$/,
         ],
         loader: require.resolve('file-loader'),
         options: {
@@ -180,14 +182,14 @@ module.exports = {
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
       {
-        test: /\.css$/,
+        test: /\.s?[ca]ss$/,
         use: [
           require.resolve('style-loader'),
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1,
               modules: true,
+              importLoaders: 1,
               localIdentName: '[name]__[local]___[hash:base64:5]'
             },
           },
@@ -210,7 +212,9 @@ module.exports = {
                 }),
               ],
             },
-          },
+          }, {
+            loader: 'sass-loader'
+          }
         ],
       },
       // ** STOP ** Are you adding a new loader?

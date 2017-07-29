@@ -3,7 +3,7 @@ import Tauwahi from 'tauwahi';
 import Tipako from 'tipako';
 
 import data from './data';
-import styles from './App.css';
+import styles from './App.scss';
 
 export default class LocationPicker extends Component {
   constructor(props) {
@@ -20,9 +20,7 @@ export default class LocationPicker extends Component {
 
     // shared props
     const stylesheets = [styles];
-    const onSelect = (selection) => {
-      this.setState({ currentSelection: selection });
-    };
+    const onSelect = (selection) => { this.setState({ currentSelection: selection }); };
 
     // Tauwahi props
     const onCreate = (names) => { console.log('Creating:', names); }; // eslint-disable-line

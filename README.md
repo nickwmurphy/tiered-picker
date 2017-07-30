@@ -1,2 +1,2 @@
 # tiered-picker
-A multi-tiered picker that supports selecting and creating
+A tiered picker that supports navigating, selecting, and creating

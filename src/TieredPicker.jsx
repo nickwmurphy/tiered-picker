@@ -20,14 +20,21 @@ export default class LocationPicker extends Component {
 
     // shared props
     const stylesheets = [styles];
-    const onSelect = (selection) => { this.setState({ currentSelection: selection }); };
+    const onSelect = (selection) => {
+      selection
+        ? this.setState({ currentSelection: selection })
+        : this.setState({ currentSelection: {} });
+    };
 
     // Tauwahi props
-    const onCreate = (names) => { console.log('Creating:', names); }; // eslint-disable-line
+    const onCreate = (item) => { console.log('Creating:', item); }; // eslint-disable-line
 
     // Tipako props
     const keyField = 'id';
+
     const onClear = () => { this.setState({ currentSelection: {} }); };
+    const onFocus = () => { this.setState({ isSearching: false }); };
+
     const renderEmpty = () => 'No locations match this search';
     const titlePlaceholder = 'Search existing locations';
     const titleValue = currentSelection.full_name;
@@ -63,6 +70,7 @@ export default class LocationPicker extends Component {
           dropdownContent,
           keyField,
           onClear,
+          onFocus,
           onSearch,
           onSelect,
           renderEmpty,

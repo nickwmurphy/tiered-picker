@@ -1,0 +1,10 @@
+.container {
+  font: 13px sans-serif;
+  width: 300px;
+}
+
+.dropdown {
+  &.expanded:not(#bogus_selector) {
+    max-height: 500px;
+  }
+}

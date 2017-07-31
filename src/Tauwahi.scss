@@ -163,7 +163,7 @@
   display: flex;
   flex-direction: column;
   font-size: $fontSize;
-  height: 202px;
+  height: 262px;
   overflow-y: scroll;
   position: relative;
 
@@ -179,7 +179,7 @@
   }
 
   &.showAddNew {
-    height: 154px;
+    height: 214px;
   }
 
   .item {

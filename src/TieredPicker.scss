@@ -1,15 +1,3 @@
 body {
   margin: 50px;
 }
-
-.container {
-  border: 0;
-  font: 13px sans-serif;
-  width: 300px;
-}
-
-.dropdown {
-  &.expanded {
-    max-height: 500px;
-  }
-}

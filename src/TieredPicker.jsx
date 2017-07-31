@@ -5,8 +5,8 @@ import data from './data';
 import Tauwahi from './Tauwahi';
 
 import './TieredPicker.scss';
-import tipakoStyleOverrides from './tipakoStyleOverrides.scss';
-import tauwahiStyleOverrides from './tauwahiStyleOverrides.scss';
+import tipakoStyleOverrides from './TipakoStyleOverrides.scss';
+import tauwahiStyleOverrides from './TauwahiStyleOverrides.scss';
 
 export default class LocationPicker extends Component {
   constructor(props) {

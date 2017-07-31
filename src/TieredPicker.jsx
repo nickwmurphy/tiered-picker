@@ -18,9 +18,11 @@ export default class LocationPicker extends Component {
     };
   }
 
-  onCreate = (item) => {
-    console.log('Creating:', item); // eslint-disable-line
-  };
+  onClear = () => { this.setState({ currentSelection: {} }); };
+
+  onCreate = (item) => { console.log('Creating:', item); }; // eslint-disable-line
+
+  onFocus = () => { this.setState({ isSearching: false }); };
 
   onSearch = (string) => {
     string
@@ -34,58 +36,38 @@ export default class LocationPicker extends Component {
       : this.setState({ currentSelection: {} });
   };
 
+  renderEmpty = () => 'No locations match this search';
+
   render() {
     const { currentSelection, isSearching } = this.state;
-
-    // shared props
-    const onSelect = this.onSelect;
-
-    // Tauwahi props
-    const onCreate = this.onCreate;
-
-    // Tipako props
-    const keyField = 'id';
-    const onClear = () => { this.setState({ currentSelection: {} }); };
-    const onFocus = () => { this.setState({ isSearching: false }); };
-    const onSearch = this.onSearch;
-    const renderEmpty = () => 'No locations match this search';
-    const titlePlaceholder = 'Search existing locations';
-    const titleValue = currentSelection.full_name;
-    const valueField = 'full_name';
 
     const dropdownContent = !isSearching
       ? (
         <Tauwahi
           canAdd
+          onCreate={this.onCreate}
+          onSelect={this.onSelect}
           stylesheets={[tauwahiStyleOverrides]}
-          {...{
-            currentSelection,
-            data,
-            onCreate,
-            onSelect
-          }}
+          {...{ currentSelection, data }}
         />
       ) : null;
 
     return (
       <Tipako
         closeOnSelect
+        keyField='id'
+        onClear={this.onClear}
+        onFocus={this.onFocus}
+        onSearch={this.onSearch}
+        onSelect={this.onSelect}
         searchable
-        updateOnSelect
         stylesheets={[tipakoStyleOverrides]}
-        {...{
-          data,
-          dropdownContent,
-          keyField,
-          onClear,
-          onFocus,
-          onSearch,
-          onSelect,
-          renderEmpty,
-          titlePlaceholder,
-          titleValue,
-          valueField
-        }}
+        titlePlaceholder='Search existing locations'
+        titleValue={currentSelection.full_name}
+        updateOnSelect
+        valueField='full_name'
+        renderEmpty={this.renderEmpty}
+        {...{ data, dropdownContent }}
       />
     );
   }

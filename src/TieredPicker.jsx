@@ -12,10 +12,7 @@ export default class LocationPicker extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentSelection: {},
-      isSearching: false
-    };
+    this.state = { currentSelection: {}, isSearching: false };
   }
 
   onClear = () => { this.setState({ currentSelection: {} }); };
@@ -44,30 +41,30 @@ export default class LocationPicker extends Component {
     const dropdownContent = !isSearching
       ? (
         <Tauwahi
+          {...{ currentSelection, data }}
           canAdd
           onCreate={this.onCreate}
           onSelect={this.onSelect}
           stylesheets={[tauwahiStyleOverrides]}
-          {...{ currentSelection, data }}
         />
       ) : null;
 
     return (
       <Tipako
+        {...{ data, dropdownContent }}
         closeOnSelect
         keyField='id'
         onClear={this.onClear}
         onFocus={this.onFocus}
         onSearch={this.onSearch}
         onSelect={this.onSelect}
+        renderEmpty={this.renderEmpty}
         searchable
         stylesheets={[tipakoStyleOverrides]}
         titlePlaceholder='Search existing locations'
         titleValue={currentSelection.full_name}
         updateOnSelect
         valueField='full_name'
-        renderEmpty={this.renderEmpty}
-        {...{ data, dropdownContent }}
       />
     );
   }

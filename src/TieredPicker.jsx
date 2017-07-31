@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Tauwahi from 'tauwahi';
 import Tipako from 'tipako';
 
 import data from './data';
-import Tauwahi from './Tauwahi';
 
 import './TieredPicker.scss';
 import tipakoStyleOverrides from './TipakoStyleOverrides.scss';

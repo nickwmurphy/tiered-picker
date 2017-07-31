@@ -21,17 +21,9 @@ export default class LocationPicker extends Component {
 
   onFocus = () => { this.setState({ isSearching: false }); };
 
-  onSearch = (string) => {
-    string
-      ? this.setState({ isSearching: true })
-      : this.setState({ isSearching: false });
-  };
+  onSearch = (string) => { this.setState({ isSearching: string.length }); };
 
-  onSelect = (selection) => {
-    selection
-      ? this.setState({ currentSelection: selection })
-      : this.setState({ currentSelection: {} });
-  };
+  onSelect = (selection) => { this.setState({ currentSelection: selection || {} }); };
 
   renderEmpty = () => 'No locations match this search';
 

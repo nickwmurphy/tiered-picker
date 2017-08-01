@@ -1,0 +1,303 @@
+@import './variables';
+
+$h: 30px;
+
+.active {
+  background: inherit;
+}
+
+.container {
+  position: relative;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.title {
+  align-items: center;
+  border: 1px solid #939393;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  padding-right: $h;
+  position: relative;
+
+  &.disabled,
+  &.disabled * {
+    border-color: #aaa;
+    color: #aaa;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.expanded {
+    border-radius: 2px 2px 0 0;
+  }
+
+  .slot {
+    font-family: inherit;
+  }
+
+  .staticText {
+    flex-grow: 1;
+    height: $h;
+    line-height: $h;
+    overflow: hidden;
+    padding: 0 30px 0 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.noClear {
+      padding-right: 8px;
+    }
+  }
+}
+
+.input {
+  border: 0;
+  cursor: text;
+  display: block;
+  flex-grow: 1;
+  font: 13px sans-serif;
+  height: $h;
+  line-height: $h;
+  padding: 0 30px 0 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.noClear {
+    padding-right: 8px;
+  }
+}
+
+.inputIcon {
+  background: 0;
+  border: 0;
+  display: block;
+  font-size: 12px;
+  height: $h;
+  line-height: $h;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: $h;
+
+  &:hover {
+    background-color: #e7e7e7;
+    cursor: pointer;
+  }
+}
+
+.caret {
+  composes: inputIcon;
+  align-items: center;
+  border-left: 1px solid #939393;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  .arrow {
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.clear {
+  composes: inputIcon;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  right: $h;
+
+  &::before {
+    content: '\00D7';
+    font-size: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.spinner {
+  composes: inputIcon;
+  animation-duration: 1.5s;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-image:
+    url(
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz\
+      0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNicgaGVpZ2h\
+      0PScxNic+PGVsbGlwc2UgY3g9IjgiIGN5PSI4IiByeD0iNyIgcnk9IjciIHN0\
+      cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9JzAuNScgc3Ryb2tlPSIjY\
+      2NjIiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9J00gMSA4IEEgOCA4IDAgMCAwID\
+      QgMTMuNycgZmlsbD0nbm9uZScgc3Ryb2tlPScjRjQ3RTQyJyAgc3Ryb2tlLXd\
+      pZHRoPScyJyBzdHJva2Utb3BhY2l0eT0nMC44JyAvPjwvc3ZnPg=="
+    );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+
+  &:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+}
+
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdown {
+  border: 0;
+  border-radius: 0 0 2px 2px;
+  box-sizing: border-box;
+  box-shadow: $shadow;
+  max-height: 0;
+  margin-top: -1px;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.15s ease;
+  width: 100%;
+
+  &.expanded {
+    background: #fff;
+    border: 1px solid #939393;
+    height: auto;
+    max-height: 300px;
+    z-index: 100;
+  }
+
+  &.withSlotBottom {
+    max-height: 340px;
+  }
+}
+
+.empty {
+  padding: 8px 16px;
+}
+
+.item {
+  cursor: pointer;
+  line-height: normal;
+  padding: 8px 16px;
+  user-select: none;
+  width: 100%;
+
+  * {
+    cursor: pointer;
+  }
+
+  &.disabled,
+  &.disabled *, {
+    color: #aaa;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: #e7e7e7;
+  }
+}
+
+.keyFocus {
+  background: #ccc;
+}
+
+.itemIcon {
+  height: $h;
+  margin-right: 5px;
+  display: flex;
+  width: $h;
+}
+
+.groupItem {
+  font-weight: bold;
+}
+
+.childItem {
+  font-weight: normal;
+  padding-left: 32px;
+}
+
+.ungroupedItem {
+  cursor: pointer;
+}
+
+.controls {
+  padding: 8px 16px;
+
+  .controlsButton {
+    background: 0;
+    border: 0;
+    border-radius: 2px;
+    color: #1e519f;
+    cursor: pointer;
+    display: inline-block;
+    font: 13px sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: #939393;
+    }
+  }
+
+  .controlsSpacer {
+    display: inline-block;
+    line-height: normal;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+}
+
+.itemsContainer {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

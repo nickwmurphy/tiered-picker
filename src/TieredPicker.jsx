@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Tauwahi from 'tauwahi';
-import Tipako from 'tipako';
+import Tauwahi from './Tauwahi';
+import Tipako from './Tipako';
 
 import data from './data';
 

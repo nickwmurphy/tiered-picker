@@ -334,8 +334,10 @@ export default class Tauwahi extends React.Component {
 
     const addNewInput = showAddNew
       ? (
-        <div className={cx(this.styles.inputContainer,
-          { [this.styles.emptyItemsContainer]: !items })}
+        <div
+          className={cx(this.styles.inputContainer,
+            { [this.styles.emptyItemsContainer]: !items })}
+          onClick={(evt) => { evt.stopPropagation(); }}
         >
           <input
             className={this.styles.input}
@@ -346,12 +348,18 @@ export default class Tauwahi extends React.Component {
         </div>
       ) : null;
 
+    const selectButton = (
+      <button className={cx(this.styles.confirmButton,
+        { [this.styles.disabled]: !stack.length })}
+      >Select</button>
+    );
+
     const createNewButton = canAdd && !showAddNew
       ? (
         <button
           className={this.styles.createNewButton}
           onClick={this.toggleCreateInput}
-        >Create New Location</button>
+        >+</button>
       ) : null;
 
     const confirmCancelButtons = showAddNew
@@ -370,12 +378,19 @@ export default class Tauwahi extends React.Component {
         </div>
       ) : null;
 
-    const footer = (
-      <div
+    const footer = !showAddNew
+      ? (<div
         className={this.styles.footer}
         onClick={this.onFooterClick}
       >
-        {!showAddNew ? createNewButton : confirmCancelButtons}
+        {createNewButton}
+        {selectButton}
+      </div>)
+      : (<div
+        className={cx(this.styles.footer, this.styles.showAddNew)}
+        onClick={this.onFooterClick}
+      >
+        {confirmCancelButtons}
       </div>);
 
     return (

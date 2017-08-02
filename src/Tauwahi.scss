@@ -17,33 +17,39 @@
   border-top: 1px solid $darkGray;
   display: flex;
   height: 48px;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 16px;
   user-select: none;
 
+  &.showAddNew {
+    justify-content: flex-end;
+  }
+
   .createNewButton {
-    background: $gray;
+    background: #f47e42;
     border-radius: 2px;
     border: 0;
+    color: $white;
     cursor: pointer;
-    font: 600 $fontSize $main-font;
+    font: 600 16px $main-font;
     height: 32px;
     padding: 0;
-    width: 100%;
+    width: 32px;
 
     &:focus {
       outline: none;
     }
 
     &:hover {
-      background: $darkGray;
+      background: #d04e33;
     }
   }
 
   .confirmButton {
-    background: $gray;
+    background: #f47e42;
     border-radius: 2px;
     border: 0;
+    color: $white;
     cursor: pointer;
     font: 600 $fontSize $main-font;
     height: 32px;
@@ -56,7 +62,7 @@
     }
 
     &:hover {
-      background: $darkGray;
+      background: #d04e33;
     }
 
     &.disabled {
@@ -79,7 +85,7 @@
     }
 
     &:hover {
-      color: $darkGray;
+      color: #d04e33;
     }
   }
 }

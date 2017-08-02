@@ -349,8 +349,10 @@ export default class Tauwahi extends React.Component {
       ) : null;
 
     const selectButton = (
-      <button className={cx(this.styles.confirmButton,
-        { [this.styles.disabled]: !stack.length })}
+      <button
+        className={cx(this.styles.confirmButton,
+          { [this.styles.disabled]: !stack.length })}
+        ref={(el) => { this.selectButton = el; }}
       >Select</button>
     );
 

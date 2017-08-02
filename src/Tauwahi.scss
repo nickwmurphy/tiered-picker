@@ -26,10 +26,10 @@
   }
 
   .createNewButton {
-    background: #f47e42;
+    background: $white;
     border-radius: 2px;
-    border: 0;
-    color: $white;
+    border: 1px solid #f47e42;
+    color: #f47e42;
     cursor: pointer;
     font: 600 16px $main-font;
     height: 32px;
@@ -41,7 +41,8 @@
     }
 
     &:hover {
-      background: #d04e33;
+      background: #f47e42;
+      color: $white;
     }
   }
 

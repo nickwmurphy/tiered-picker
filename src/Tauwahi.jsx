@@ -146,11 +146,9 @@ export default class Tauwahi extends React.Component {
 
     if (stack.length < limit - 1 || (stack.length === limit - 1
       && stack[stack.length - 1] !== this.state.currentParent)) {
-      while (stack.length && !sameParent
-        && stack[stack.length - 1] !== this.state.currentParent) {
+      while (stack.length && !sameParent && stack[stack.length - 1] !== this.state.currentParent) {
         stack.pop();
       }
-
       if (!stack.length || (stack.length && !sameParent)) {
         stack.push(currentParent);
       } else if (stack.length && sameParent) {
@@ -163,6 +161,8 @@ export default class Tauwahi extends React.Component {
       });
     }
   }
+
+  onDoubleClick = (evt) => { if (this.props.canAdd) this.onForwardClick(evt); }
 
   onItemClick = (evt) => {
     const { stack } = this.state;
@@ -304,7 +304,7 @@ export default class Tauwahi extends React.Component {
           data-id={item.id}
           key={item.id}
           onClick={this.onItemClick}
-          onDoubleClick={this.onForwardClick}
+          onDoubleClick={this.onDoubleClick}
         >
           {check}
           <div className={this.styles.itemName}>{item.name}</div>
@@ -325,7 +325,7 @@ export default class Tauwahi extends React.Component {
           className={cx(this.styles.itemsContainer, this.styles.emptyItemsContainer,
             { [this.styles.showAddNew]: showAddNew })}
           onClick={(evt) => { evt.stopPropagation(); }}
-        >{`No locations in ${this.memoizedData[currentParent].name}`}</div>
+        >{`No locations in ${this.memoizedData[currentParent].name}. `}</div>
       );
 
     const placeholder = currentParent !== 'root'
@@ -382,7 +382,8 @@ export default class Tauwahi extends React.Component {
 
     const footer = !showAddNew
       ? (<div
-        className={this.styles.footer}
+        className={cx(this.styles.footer,
+          { [this.styles.showAddNew]: !canAdd })}
         onClick={this.onFooterClick}
       >
         {createNewButton}
